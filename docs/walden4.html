@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Universal Viewer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/universalviewer@4.0.0/dist/uv.css"
+    />
+    <script
+      type="application/javascript"
+      src="https://cdn.jsdelivr.net/npm/universalviewer@4.0.0/dist/umd/UV.js"
+    ></script>
+    <style>
+      #uv {
+        width: 924px;
+        height: 668px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Volume 2</h1>
+    <div class="uv" id="uv"></div>
+
+    <script>
+      var urlAdapter = new UV.IIIFURLAdapter();
+
+      const data = urlAdapter.getInitialData({
+        manifest: "https://hdl.huntington.org/iiif/info/p16003coll16/663/manifest.json",
+        embedded: true // needed for codesandbox frame
+      });
+
+      uv = UV.init("uv", data);
+      urlAdapter.bindTo(uv);
+    </script>
+  </body>
+</html>
